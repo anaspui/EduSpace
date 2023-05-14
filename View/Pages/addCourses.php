@@ -15,111 +15,111 @@ require_once './../../Controller/db_connect.php';
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link rel="stylesheet" href="./../../View/styles.css">
     <style>
-        .heading h1 {
-            margin-bottom: 1em;
-            color: var(--text);
-        }
+    .heading h1 {
+        margin-bottom: 1em;
+        color: var(--text);
+    }
 
-        .dashboard_container {
-            height: calc(100vh - 60px);
-            display: grid;
-            grid-template-columns: 300px auto;
-        }
+    .dashboard_container {
+        height: calc(100vh - 60px);
+        display: grid;
+        grid-template-columns: 300px auto;
+    }
 
-        .dashboard_content_section {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
+    .dashboard_content_section {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+    }
 
-        .dashboard_input_container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 5%;
-        }
+    .dashboard_input_container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 5%;
+    }
 
-        .dashboard_left_side_input input,
-        .dashboard_right_side_input input,
-        .dashboard_right_side_input textarea {
-            width: 100%;
-            border-radius: 4px;
-            padding: 7px 10px;
-            font-size: 14px;
-            outline: none;
-            margin-bottom: 20px;
-            border-top: none;
-            border-right: none;
-            border-bottom: 2px solid var(--secondaryText2);
-            resize: vertical;
-        }
+    .dashboard_left_side_input input,
+    .dashboard_right_side_input input,
+    .dashboard_right_side_input textarea {
+        width: 100%;
+        border-radius: 4px;
+        padding: 7px 10px;
+        font-size: 14px;
+        outline: none;
+        margin-bottom: 20px;
+        border-top: none;
+        border-right: none;
+        border-bottom: 2px solid var(--secondaryText2);
+        resize: vertical;
+    }
 
-        .dashboard_left_side_input input:hover,
-        .dashboard_left_side_input input:focus,
-        .dashboard_right_side_input input:hover,
-        .dashboard_right_side_input input:focus,
-        .dashboard_right_side_input textarea:hover,
-        .dashboard_right_side_input textarea:focus {
-            border-bottom: 2px solid var(--text);
-        }
+    .dashboard_left_side_input input:hover,
+    .dashboard_left_side_input input:focus,
+    .dashboard_right_side_input input:hover,
+    .dashboard_right_side_input input:focus,
+    .dashboard_right_side_input textarea:hover,
+    .dashboard_right_side_input textarea:focus {
+        border-bottom: 2px solid var(--text);
+    }
 
-        .dashboard_right_side_input button {
-            padding: 9px;
-            background-color: var(--tertiary);
-            border: none;
-            border-radius: 7px;
-            width: 100%;
-            cursor: pointer;
-            color: var(--primary);
-            font-weight: 500;
-            font-size: 15px;
-            border-bottom: 2px solid var(--secondaryText2);
-            transition: 200ms;
-        }
+    .dashboard_right_side_input button {
+        padding: 9px;
+        background-color: var(--tertiary);
+        border: none;
+        border-radius: 7px;
+        width: 100%;
+        cursor: pointer;
+        color: var(--primary);
+        font-weight: 500;
+        font-size: 15px;
+        border-bottom: 2px solid var(--secondaryText2);
+        transition: 200ms;
+    }
 
-        .dashboard_right_side_input button:hover {
-            border-bottom: 2px solid var(--tertiary);
-            background-color: var(--text);
-        }
+    .dashboard_right_side_input button:hover {
+        border-bottom: 2px solid var(--tertiary);
+        background-color: var(--text);
+    }
 
 
-        /* Dashboard Navbar Section */
-        .dashboard_quick_links {
-            color: var(--primary);
-            height: 100%;
-            padding: 20px;
-            box-shadow: 0px 0px 5px var(--secondaryText2);
-        }
+    /* Dashboard Navbar Section */
+    .dashboard_quick_links {
+        color: var(--primary);
+        height: 100%;
+        padding: 20px;
+        box-shadow: 0px 0px 5px var(--secondaryText2);
+    }
 
-        .dashboard_quick_links .drawer_nav_link {
-            display: block;
-            text-decoration: none;
-            margin-block: 10px;
-            background-color: var(--tertiary);
-            padding: 10px;
-            border-radius: 10px;
-            font-weight: 500;
-            color: var(--primary);
-            transition: 200ms;
-        }
+    .dashboard_quick_links .drawer_nav_link {
+        display: block;
+        text-decoration: none;
+        margin-block: 10px;
+        background-color: var(--tertiary);
+        padding: 10px;
+        border-radius: 10px;
+        font-weight: 500;
+        color: var(--primary);
+        transition: 200ms;
+    }
 
-        .dashboard_quick_links .drawer_nav_link:hover,
+    .dashboard_quick_links .drawer_nav_link:hover,
         {
         background-color: var(--text);
-        }
+    }
 
-        .error {
-            color: red;
-            font-size: 14px;
-            font-weight: bold;
-            margin: 5px 0;
-        }
+    .error {
+        color: red;
+        font-size: 14px;
+        font-weight: bold;
+        margin: 5px 0;
+    }
 
-        .success {
-            color: green;
-            font-size: 14px;
-            font-weight: bold;
-        }
+    .success {
+        color: green;
+        font-size: 14px;
+        font-weight: bold;
+    }
     </style>
     <title>EduSpace</title>
 </head>

@@ -99,15 +99,15 @@ $_SESSION["previousURL"] = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFE
                     <span class="error">
                         <?php if (isset($_GET['error'])) {
                             ?>
-                            <p class="error">
-                                <?php echo $_GET['error']; ?>
-                            </p>
-                            <?php
+                        <p class="error">
+                            <?php echo $_GET['error']; ?>
+                        </p>
+                        <?php
                         } else {
                             echo "";
                             ?>
 
-                            <?php
+                        <?php
                         }
                         ?>
                     </span>

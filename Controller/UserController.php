@@ -61,6 +61,7 @@ function setDataCookie($user)
 if ($_SESSION["authEvent"] == "logout") {
     setcookie("loggedUser", "", time() - 3600, "/");
     $_SESSION['name'] = "";
+    $_SESSION['role'] = "";
     $_SESSION["authEvent"] == "";
     header("Location: ./../index.php");
 }
@@ -92,6 +93,7 @@ if ($_SESSION["authEvent"] == "login") {
                 $_SESSION['name'] = $user['name'];
                 $_SESSION['email'] = $user['email'];
                 $_SESSION['username'] = $user['username'];
+                $_SESSION['role'] = $user['role'];
 
                 // Redirect to a welcome page
 
@@ -126,8 +128,11 @@ if (
     $email = $_SESSION['email'];
     $username = $_SESSION['username'];
     $password = $_SESSION['password'];
+    $role =  'student';
     $form_data = $_SESSION;
-
+    //Extraction of domain
+    $emailParts = explode('@', $email);
+    $mailDomain = end($emailParts);
     // Validate user input using empty() function and filter_var() function for email validation 
     if (empty($name)) {
         $nameError = "Name is required.";
@@ -147,9 +152,13 @@ if (
     } else {
         // User input is valid, hash the password using password_hash() function with default algorithm 
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-
+        if ($mailDomain === 'teacher.eduspace.edu') {
+            $role = 'teacher';
+        } else {
+            $role = 'student';
+        }
         // Prepare a SQL statement to insert user data into the database 
-        $sql = "INSERT INTO users (name, email, username, password) VALUES ('$name', '$email', '$username', '$hashed_password')";
+        $sql = "INSERT INTO users (name, email, username, password, role) VALUES ('$name', '$email', '$username', '$hashed_password', '$role');";
 
         // Execute the SQL statement and check if it was successful 
         if (mysqli_query($conn, $sql)) {
@@ -162,6 +171,7 @@ if (
             if (mysqli_num_rows($result) > 0) {
                 $user = mysqli_fetch_assoc($result);
                 setDataCookie($user);
+                $_SESSION['role']= $user['role'];
             }
 
             header("Location: ./../View/Pages/profile.php");
