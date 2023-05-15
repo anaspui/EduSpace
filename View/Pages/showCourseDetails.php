@@ -85,182 +85,182 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <script src="https://kit.fontawesome.com/9a6693ad48.js" crossorigin="anonymous"></script>
 
     <style>
-        .background_color {
-            top: 0;
-            width: calc(100vw - 18px);
-            z-index: -1;
-            padding-bottom: 20vh;
-            /* position: absolute; */
-        }
+    .background_color {
+        top: 0;
+        width: calc(100vw - 18px);
+        z-index: -1;
+        padding-bottom: 20vh;
+        /* position: absolute; */
+    }
 
-        .heading-title {
+    .heading-title {
 
-            height: 50vh;
-            background-color: var(--darkText);
-            position: absolute;
-            padding-top: 100px;
-            top: 0;
-            width: 100%;
-            left: 0;
-        }
+        height: 50vh;
+        background-color: var(--darkText);
+        position: absolute;
+        padding-top: 100px;
+        top: 0;
+        width: 100%;
+        left: 0;
+    }
 
-        .show_course_details_container {
-            padding-inline: 14%;
-            margin-top: 100px;
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 30px;
-        }
+    .show_course_details_container {
+        padding-inline: 14%;
+        margin-top: 100px;
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 30px;
+    }
 
-        .show_course_details {
-            color: white;
-        }
+    .show_course_details {
+        color: white;
+    }
 
-        .show_course_cart {
-            position: relative;
-        }
+    .show_course_cart {
+        position: relative;
+    }
 
-        .course_cart {
-            background-color: white;
-            box-shadow: 0 0 4px #777;
-            border-radius: 5px;
-            padding: 1em;
-            position: sticky;
-            margin-top: -80px;
-            top: 120px;
-        }
+    .course_cart {
+        background-color: white;
+        box-shadow: 0 0 4px #777;
+        border-radius: 5px;
+        padding: 1em;
+        position: sticky;
+        margin-top: -80px;
+        top: 120px;
+    }
 
-        .course_price {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 15px;
-        }
+    .course_price {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 15px;
+    }
 
-        .course_price b {
-            font-size: clamp(26px, 28px, 30px);
-        }
+    .course_price b {
+        font-size: clamp(26px, 28px, 30px);
+    }
 
-        .course_cart .add_to_cart_btn,
-        .buy_course_btn {
-            width: 100%;
-            padding: 10px 0;
-            margin-bottom: 15px;
-            border-radius: 5px;
-            border: none;
-            background-color: var(--tertiary);
-            font-weight: 500;
-            font-size: 16px;
-            cursor: pointer;
-            color: var(--primary);
-            transition: background-color 200ms;
-        }
+    .course_cart .add_to_cart_btn,
+    .buy_course_btn {
+        width: 100%;
+        padding: 10px 0;
+        margin-bottom: 15px;
+        border-radius: 5px;
+        border: none;
+        background-color: var(--tertiary);
+        font-weight: 500;
+        font-size: 16px;
+        cursor: pointer;
+        color: var(--primary);
+        transition: background-color 200ms;
+    }
 
-        .buy_course_btn {
-            border: 1px solid var(--text);
-            color: var(--text);
-            background-color: transparent;
-        }
+    .buy_course_btn {
+        border: 1px solid var(--text);
+        color: var(--text);
+        background-color: transparent;
+    }
 
-        .add_to_cart_btn:hover {
-            background-color: var(--text);
-        }
+    .add_to_cart_btn:hover {
+        background-color: var(--text);
+    }
 
-        .info_message {
-            text-align: center;
-            width: 100%;
-            font-size: 14px;
-            margin-bottom: 10px;
-        }
+    .info_message {
+        text-align: center;
+        width: 100%;
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
 
-        .course_details_list {
-            margin-bottom: 20px;
-        }
+    .course_details_list {
+        margin-bottom: 20px;
+    }
 
-        .course_details_list p {
-            font-size: 12px;
-        }
+    .course_details_list p {
+        font-size: 12px;
+    }
 
-        .coupon_input {
-            width: 100%;
-            margin-bottom: 10px;
-            padding: 10px;
-            outline: none;
-        }
+    .coupon_input {
+        width: 100%;
+        margin-bottom: 10px;
+        padding: 10px;
+        outline: none;
+    }
 
-        .coupon_input_filed {
-            border-bottom: 2px solid var(--secondaryText2);
-        }
+    .coupon_input_filed {
+        border-bottom: 2px solid var(--secondaryText2);
+    }
 
-        .coupon_input_filed:focus {
-            border-bottom: 2px solid var(--text);
-        }
+    .coupon_input_filed:focus {
+        border-bottom: 2px solid var(--text);
+    }
 
-        .coupon_btn {
-            border: 2px solid var(--text);
-            cursor: pointer;
-            transition: all 200ms;
-            font-size: 16px;
-            font-weight: 600;
-            color: var(--text);
-        }
+    .coupon_btn {
+        border: 2px solid var(--text);
+        cursor: pointer;
+        transition: all 200ms;
+        font-size: 16px;
+        font-weight: 600;
+        color: var(--text);
+    }
 
-        .coupon_btn:hover {
-            background-color: var(--text);
-            color: var(--primary);
-        }
+    .coupon_btn:hover {
+        background-color: var(--text);
+        color: var(--primary);
+    }
 
-        /* Details section */
-        .show_course_details p {
-            font-size: 14px;
-        }
+    /* Details section */
+    .show_course_details p {
+        font-size: 14px;
+    }
 
-        .show_course_tag {
-            background-color: #ffdd00;
-            color: var(--darkText);
-            font-size: 11px;
-            padding: 0px 6px;
-            width: fit-content;
-            border-radius: 5px;
-            margin-block: 10px;
-        }
+    .show_course_tag {
+        background-color: #ffdd00;
+        color: var(--darkText);
+        font-size: 11px;
+        padding: 0px 6px;
+        width: fit-content;
+        border-radius: 5px;
+        margin-block: 10px;
+    }
 
-        .course_ratings {
-            display: flex;
-            gap: 10px;
-        }
+    .course_ratings {
+        display: flex;
+        gap: 10px;
+    }
 
-        .course_ratings i {
-            color: #ffdd00;
-        }
+    .course_ratings i {
+        color: #ffdd00;
+    }
 
-        .course_learning {
-            margin-top: 20vh;
-            color: var(--darkText);
-            border: 1px solid var(--darkText);
-            border-radius: 7px;
-        }
+    .course_learning {
+        margin-top: 20vh;
+        color: var(--darkText);
+        border: 1px solid var(--darkText);
+        border-radius: 7px;
+    }
 
-        .course_learning {
-            padding: 15px;
-        }
+    .course_learning {
+        padding: 15px;
+    }
 
-        .course_learning i {
-            color: #ffdd00;
-            margin-right: 7px;
-        }
+    .course_learning i {
+        color: #ffdd00;
+        margin-right: 7px;
+    }
 
-        .course_requirment {
-            color: var(--darkText);
-            margin-top: 20px;
-        }
+    .course_requirment {
+        color: var(--darkText);
+        margin-top: 20px;
+    }
 
-        .course_description {
-            color: var(--darkText);
-            margin-block: 20px;
-            text-align: justify;
-            font-size: 15px;
-        }
+    .course_description {
+        color: var(--darkText);
+        margin-block: 20px;
+        text-align: justify;
+        font-size: 15px;
+    }
     </style>
 </head>
 
@@ -384,7 +384,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </div>
 
                     <button class="add_to_cart_btn" type="button">Add to cart</button>
-                    <a href="showCourse.php?course_id=<?php echo $course_id ?>"> <button class="buy_course_btn" type="button"><a href="enroll.php?enroll=<?php echo $course_id ?>">Buy Now</a>
+                    <a href="showCourse.php?course_id=<?php echo $course_id ?>"> <button class="buy_course_btn"
+                            type="button"><a href="enroll.php?enroll=<?php echo $course_id ?>">Buy Now</a>
                     </a>
                     <p><?php
                         if (isset($_SESSION['enrollErr'])) {
@@ -410,19 +411,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </div>
 
                     <form method="post">
-                        <input class="coupon_input coupon_input_filed" type="text" name="coupon_code" placeholder="Your Coupon">
+                        <input class="coupon_input coupon_input_filed" type="text" name="coupon_code"
+                            placeholder="Your Coupon">
                         <?php
                         if ($coupon_err) {
                         ?>
-                            <p class="error">
-                                <?php echo $coupon_err; ?>
-                            </p><br />
+                        <p class="error">
+                            <?php echo $coupon_err; ?>
+                        </p><br />
                         <?php
                         } else {
                         ?>
-                            <p class="success">
-                                <?php echo $coupon_suc; ?>
-                            </p><br />
+                        <p class="success">
+                            <?php echo $coupon_suc; ?>
+                        </p><br />
                         <?php
                         }
                         ?>
