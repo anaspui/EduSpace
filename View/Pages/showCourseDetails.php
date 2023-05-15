@@ -68,7 +68,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         // Coupon code did not match
         $coupon_err = "Sorry, your coupon code was incorrect.";
-
     }
 }
 
@@ -385,8 +384,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </div>
 
                     <button class="add_to_cart_btn" type="button">Add to cart</button>
-                    <a href="showCourse.php?course_id=<?php echo $course_id ?>"> <button class="buy_course_btn"
-                            type="button">Buy now</button> </a>
+                    <a href="showCourse.php?course_id=<?php echo $course_id ?>"> <button class="buy_course_btn" type="button"><a href="enroll.php?enroll=<?php echo $course_id ?>">Buy Now</a>
+                    </a>
+                    <p><?php
+                        if (isset($_SESSION['enrollErr'])) {
+                            if (!empty($_SESSION['enrollErr'])) {
+                                echo $_SESSION['enrollErr'];
+                            }
+                            $_SESSION['enrollErr'] = "";
+                        }
+                        ?></p>
 
                     <p class="info_message">30-Day Money-Back Guarantee</p>
 
@@ -403,21 +410,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </div>
 
                     <form method="post">
-                        <input class="coupon_input coupon_input_filed" type="text" name="coupon_code"
-                            placeholder="Your Coupon">
+                        <input class="coupon_input coupon_input_filed" type="text" name="coupon_code" placeholder="Your Coupon">
                         <?php
                         if ($coupon_err) {
-                            ?>
+                        ?>
                             <p class="error">
                                 <?php echo $coupon_err; ?>
                             </p><br />
-                            <?php
+                        <?php
                         } else {
-                            ?>
+                        ?>
                             <p class="success">
                                 <?php echo $coupon_suc; ?>
                             </p><br />
-                            <?php
+                        <?php
                         }
                         ?>
                         <input class="coupon_input coupon_btn" type="submit" value="Add Coupon">

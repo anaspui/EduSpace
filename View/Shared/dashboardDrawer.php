@@ -90,37 +90,41 @@
 
                 <!-- / -->
                 <?php
-                if(isset($_SESSION['role'])){
-                if($_SESSION['role'] == 'teacher'){ ?>
+                if (isset($_SESSION['role'])) {
+                    if ($_SESSION['role'] == 'teacher') { ?>
                 <a class="<?= $page === 'addCourses.php' ? 'drawer_active' : 'drawer_nav_link'; ?>"
                     href="./../../../Project/View/Pages/addCourses.php">Add Course</a>
 
-                <?php }} ?>
+                <?php }
+                } ?>
 
                 <!--  -->
                 <?php
-                if(isset($_SESSION['role'])){
-                if($_SESSION['role'] == 'admin'){ ?>
+                if (isset($_SESSION['role'])) {
+                    if ($_SESSION['role'] == 'teacher') { ?>
                 <a class="<?= $page === 'addCourses.php' ? 'drawer_active' : 'drawer_nav_link'; ?>"
                     href="./../../../Project/View/Pages/addPodcasts.php">Add Podcast</a>
 
-                <?php }} ?>
+                <?php }
+                } ?>
 
                 <!--  -->
                 <?php
-                if(isset($_SESSION['role'])){
-                if($_SESSION['role'] == 'admin'){ ?>
+                if (isset($_SESSION['role'])) {
+                    if ($_SESSION['role'] == 'admin') { ?>
                 <a class="<?= $page === 'addRecommendedCourse.php' ? 'drawer_active' : 'drawer_nav_link'; ?>"
                     href="./../../../Project/View/Pages/addRecommendedCourse.php">Add Recommended Course</a>
-                <?php }} ?>
+                <?php }
+                } ?>
                 <!--  -->
                 <?php
-                if(isset($_SESSION['role'])){
-                if($_SESSION['role'] == 'teacher' || $_SESSION['role'] == 'admin'){ ?>
+                if (isset($_SESSION['role'])) {
+                    if ($_SESSION['role'] == 'teacher' || $_SESSION['role'] == 'admin') { ?>
                 <a class="<?= $page === 'addCoupon.php' ? 'drawer_active' : 'drawer_nav_link'; ?>"
                     href="./../../../Project/View/Pages/addCoupon.php">Add Coupone</a>
 
-                <?php }}?>
+                <?php }
+                } ?>
                 <!--  -->
 
             </div>

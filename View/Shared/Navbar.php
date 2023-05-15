@@ -13,19 +13,19 @@
     <link rel="stylesheet" href="https://kit.fontawesome.com/4bd420869f.css" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <style>
-        .error {
-            color: red;
-            font-size: 14px;
-            font-weight: bold;
-            margin: 5px 0;
-        }
+    .error {
+        color: red;
+        font-size: 14px;
+        font-weight: bold;
+        margin: 5px 0;
+    }
 
-        .success {
-            color: green;
-            font-size: 14px;
-            font-weight: bold;
-            /* margin: 5px 0; */
-        }
+    .success {
+        color: green;
+        font-size: 14px;
+        font-weight: bold;
+        /* margin: 5px 0; */
+    }
     </style>
     <title>Document</title>
 
@@ -75,11 +75,11 @@
 
                 <?php
                 if (empty($_COOKIE['loggedUser'])) {
-                    ?>
-                    <a class="login_btn" href="./../../../Project/View/Pages/login.php">Login</a>
-                    <a class="registration_btn" href="./../../../Project/View/Pages/registration.php">Registration</a>
+                ?>
+                <a class="login_btn" href="./../../../Project/View/Pages/login.php">Login</a>
+                <a class="registration_btn" href="./../../../Project/View/Pages/registration.php">Registration</a>
 
-                    <?php
+                <?php
                 } else {
                     function decryptNav($data, $key)
                     {
@@ -102,14 +102,21 @@
                     $userData = json_decode($decryptedData, true);
 
                     $_SESSION["authEvent"] = "logout";
-                    ?>
-                    <a class="registration_btn" href="./../../../Project/Controller/UserController.php">Logout</a>
-                    <span>
-                        <a style="color:var(--darkText);" href="./../../../Project/View/Pages/profile.php">
-                            <?php echo $userData['name'] ?>
-                        </a>
-                    </span>
-                    <?php
+                ?>
+                <a class="registration_btn" href="./../../../Project/Controller/UserController.php">Logout</a>
+                <span>
+                    <a style="color:var(--darkText);" href="./../../../Project/View/Pages/profile.php">
+                        <?php echo $userData['name'];
+                            if (isset($userData['role']) && !empty($userData['role'])) {
+                                if ($userData['role'] == 'admin' || $userData['role'] == 'teacher') {
+                                    echo '(' . $userData['role'] . ')';
+                                }
+                            }
+
+                            ?>
+                    </a>
+                </span>
+                <?php
                 }
                 ?>
             </div>

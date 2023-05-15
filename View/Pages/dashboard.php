@@ -37,7 +37,56 @@ require_once './../../Controller/db_connect.php';
         </div>
 
         <div class="dashboard_content_section">
-            <h1>Dashboard</h1>
+            <!-- teacher -->
+
+            <table class="customers">
+                <tr>
+                    <th>Course Name</th>
+                    <th>Student Name</th>
+                    <th>Enrolled In</th>
+                </tr>
+                <?php
+                $userMail = $_SESSION['email'];
+                include('../../Controller/db_connect.php');
+                $sql = "SELECT c.course_id, c.course_name, u.username, ec.date
+                FROM enrolled_courses ec
+                JOIN courses c ON ec.course_id = c.course_id
+                JOIN users u ON ec.user_email = u.email
+                WHERE c.instructor_email = $userMail;
+                ";
+                $result = mysqli_query($conn, $sql);
+                if ($result) {
+                    if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_assoc()) {
+                            echo '<tr>
+                                <td>' . $row["course_name"] . '</td>
+                                <td>' . $row["username"] . '</td>
+                                <td>' . $row["date"] . '</td>
+                                <td><button><a href="showCourseDetails.php?course_id=' . $row["course_id"] . '">Show</a></button></td>
+                                </tr>';
+                        }
+                    }
+                }
+                ?>
+
+            </table>
+
+
+            <!--  -->
+
+
+
+
+            <!-- admin -->
+
+
+            <!--  -->
+
+
+            <!-- student -->
+
+
+            <!--  -->
         </div>
     </div>
     <!-- for Navbar Responsive -->

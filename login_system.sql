@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 14, 2023 at 05:36 PM
+-- Generation Time: May 15, 2023 at 02:52 AM
 -- Server version: 10.4.27-MariaDB
--- PHP Version: 8.2.0
+-- PHP Version: 8.0.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -123,6 +123,53 @@ INSERT INTO `course_content` (`content_id`, `course_id`, `totalModule`, `moduleN
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `enrolled_courses`
+--
+
+CREATE TABLE `enrolled_courses` (
+  `id` int(11) NOT NULL,
+  `user_email` varchar(255) DEFAULT NULL,
+  `course_id` int(11) DEFAULT NULL,
+  `date` date DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `enrolled_courses`
+--
+
+INSERT INTO `enrolled_courses` (`id`, `user_email`, `course_id`, `date`) VALUES
+(29, 'omar224md@teacher.eduspace.edu', 4, '2023-05-15');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `podcasts`
+--
+
+CREATE TABLE `podcasts` (
+  `id` int(11) NOT NULL,
+  `name` varchar(50) DEFAULT NULL,
+  `author` varchar(100) DEFAULT NULL,
+  `published` date DEFAULT current_timestamp(),
+  `rating` float DEFAULT 0,
+  `source` text DEFAULT NULL,
+  `image` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `podcasts`
+--
+
+INSERT INTO `podcasts` (`id`, `name`, `author`, `published`, `rating`, `source`, `image`) VALUES
+(9, 'daw', 'daw', '2023-05-15', 0, 'https://podcasts.google.com/feed/aHR0cHM6Ly9hbmNob3IuZm0vcy9iOGQzMzVjL3BvZGNhc3QvcnNz?sa=X&ved=0CBwQjs4CKAFqFwoTCKD0x7G29f4CFQAAAAAdAAAAABAB', 'podcast_default.jpg'),
+(10, 'gsr', 'grg', '2023-05-15', 0, 'https://podcasts.google.com/feed/aHR0cHM6Ly9hbmNob3IuZm0vcy9iOGQzMzVjL3BvZGNhc3QvcnNz?sa=X&ved=0CBwQjs4CKAFqFwoTCKD0x7G29f4CFQAAAAAdAAAAABAB', 'podcast_default.jpg'),
+(11, 'anas', 'anas', '2023-05-15', 0, 'https://podcasts.google.com/feed/aHR0cHM6Ly9hbmNob3IuZm0vcy9iOGQzMzVjL3BvZGNhc3QvcnNz?sa=X&ved=0CBwQjs4CKAFqFwoTCKD0x7G29f4CFQAAAAAdAAAAABAB', 'podcast_default.jpg'),
+(12, 'jitu', 'jitu', '2023-05-15', 0, 'https://podcasts.google.com/feed/aHR0cHM6Ly9hbmNob3IuZm0vcy9iOGQzMzVjL3BvZGNhc3QvcnNz?sa=X&ved=0CBwQjs4CKAFqFwoTCKD0x7G29f4CFQAAAAAdAAAAABAB', 'podcast_default.jpg'),
+(13, 'daw', 'daw', '2023-05-15', 0, 'https://podcasts.google.com/feed/aHR0cHM6Ly9hbmNob3IuZm0vcy9iOGQzMzVjL3BvZGNhc3QvcnNz?sa=X&ved=0CBwQjs4CKAFqFwoTCKD0x7G29f4CFQAAAAAdAAAAABAB', 'podcast_default.jpg');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `recommended_courses`
 --
 
@@ -151,31 +198,22 @@ CREATE TABLE `users` (
   `name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `username` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL
+  `password` varchar(255) NOT NULL,
+  `role` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`name`, `email`, `username`, `password`) VALUES
-('Md. Jidanul Hakim Jitu', 'jisan.jitu@yahoo.com', '123', '$2y$10$ZkKwfilMN.AaUQG6cT9QkODBpZmFPXFpiQVCERWP8gASFdU0yxcdK'),
-('Md. Jidanul Hakim Jitu', 'jitu000166@gmail.com', 'jitu', '$2y$10$IQhsFKy0bhCw6mYO8VUhYuqydKZefkUSxFqgw9ibPW2.2KsO767ee'),
-('Md. Jidanul Hakim Jitu', 'bita.gama0001@gmail.com', '1234', '$2y$10$qWAEA8GXfp9bdadzDoHEcO9FjFJVCdGUofoFIb/TggCm/D2o4shla'),
-('Md. Jidanul Hakim', 'hola@gmail.com', '1123', '$2y$10$zc6mZCqcwA695lD.fTsTOuYrRbHWrxVrUVafhFUTiyZ6rAuHzoTsi'),
-('Code Guard', 'hola123@gmail.com', 'root', '$2y$10$8NrMc3G42gpqTQZvm6wQquwTIDt5ktMHkaNmx9uCIoz0OHKU46LH.'),
-('Md. Jidanul Hakim', 'hola@gmail.com', '123', '$2y$10$MMP.sZ/RG/zya78D.UVoHOgJ5LgMnUtg6BhrAbR5wx6C9FZPVnbWa'),
-('Md. Jidanul Hakim Jitu', 'bita.gama0001@gmail.com', '123', '$2y$10$ct58OG1ff5x6ONpQ2yFO7OYfkINR0mIKxUo0wETfOW0tt1WOZ/Pja'),
-('Code Guard', 'hola123@gmail.com', '123', '$2y$10$xXBLZGqOPa57nhASgWZ/Eee8nFv2nLa9TjV5u4ePvdDda6NMiNmtu'),
-('Code Guard', 'hola123@gmail.com', '123', '$2y$10$Xja6jsgSfx8RHZ.ysqZxRe.HOBzbxPqZueA0SsyNETr.xh3OmuloS'),
-('Code Guard', 'hola123@gmail.com', '123', '$2y$10$xeh7vN9j.ZAdyp3/82qKQOsBwAZUY1/5MrkM2YoxUu9kiIoAE6EMu'),
-('Code Guard', 'hola123@gmail.com', '123', '$2y$10$ASveIRHwqRCrG0Vj5mmHqOotPSwDpcdetS/ieG8YN4.QY9RMjQyUO'),
-('Md. Jidanul Hakim', 'hola22@gmail.com', 'jitu', '$2y$10$pZhrdy61KbNtydrleZEzAOb9rmXrUEU8s4piRKk8tEMXCh9iX7h/O'),
-('Md. Jidanul Hakim', 'hola222@gmail.com', 'jitu', '$2y$10$JysTUfrLQj6pRCdq7/h9d.dFTSZXzmhEaS0p.W.daf25q6.ePB1J2'),
-('Md. Jidanul Hakim', 'hola222@gmail.com', '12', '$2y$10$ws21CE5/eyX3Nry/NkrWQOygxEFUlAN55rwiyOxc6BxgJKyvBQrje'),
-('Md. Jidanul Hakim', 'hola222@gmail.com', 'jitu', '$2y$10$Th8hZGLU47WzEXWzn1h78uvLIkjCyS4LyyRRHMS4dR.9Ej1vJSvYS'),
-('Md. Jidanul Hakim', 'hola222@gmail.com', '123', '$2y$10$bhtIlxTUoNyJf/pGscf.U.TcB.dKsBvv4fBhhf3RNKCk/OL2JZHTK'),
-('Md. Jidanul Hakim', 'hola222@gmail.com', '123', '$2y$10$N1Vl1CuJEDcgPCI0pR8PZuWLOxdSOvAABvCgl4e2C4kX2bLpMdTuy');
+INSERT INTO `users` (`name`, `email`, `username`, `password`, `role`) VALUES
+('Hatem', 'hatem@student.eduspace.edu', 'hatem', '$2y$10$FnS0pJBly5gpLfl.7VH0oOn7Aezy7CIHriM.TaQncwsiawF2LSXIC', 'student'),
+('Hai', 'hola2212@gmail.com', 'Hai', '$2y$10$MbvWpS3b6a.uSwpXZi8yfu0L5o4oq1x9Es5yWe1.jimvIxjEckJVK', 'student'),
+('Md. Jidanul Hakim', 'hola22@gmail.com', 'jitu', '$2y$10$pZhrdy61KbNtydrleZEzAOb9rmXrUEU8s4piRKk8tEMXCh9iX7h/O', ''),
+('Md. Jidanul Hakim Jitu', 'jisan.jitu@yahoo.com', '123', '$2y$10$ZkKwfilMN.AaUQG6cT9QkODBpZmFPXFpiQVCERWP8gASFdU0yxcdK', ''),
+('Md. Jidanul Hakim Jitu', 'jitu000166@gmail.com', 'jitu', '$2y$10$IQhsFKy0bhCw6mYO8VUhYuqydKZefkUSxFqgw9ibPW2.2KsO767ee', ''),
+('Mohammad Oma', 'omar224md@teacher.eduspace.edu', 'omar', '$2y$10$OKeXJ.BcZ9Jm1.LCRczO.uGHhwgXKEBN36WDzEubMwKpx//PySjwu', 'teacher'),
+('anas', 'omar24md@gmail.com', 'anas', '$2y$10$7H8yDCmHwqrxoqqMKZcP5euer/jhen1ZI.hqJjWwmdfZL.aENM98i', 'admin');
 
 --
 -- Indexes for dumped tables
@@ -203,11 +241,31 @@ ALTER TABLE `course_content`
   ADD KEY `fk_course_content_course_id` (`course_id`);
 
 --
+-- Indexes for table `enrolled_courses`
+--
+ALTER TABLE `enrolled_courses`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_email` (`user_email`),
+  ADD KEY `course_id` (`course_id`);
+
+--
+-- Indexes for table `podcasts`
+--
+ALTER TABLE `podcasts`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `recommended_courses`
 --
 ALTER TABLE `recommended_courses`
   ADD PRIMARY KEY (`recommended_course_id`),
   ADD UNIQUE KEY `unique_course_id` (`course_id`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`email`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -232,6 +290,18 @@ ALTER TABLE `course_content`
   MODIFY `content_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
+-- AUTO_INCREMENT for table `enrolled_courses`
+--
+ALTER TABLE `enrolled_courses`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+
+--
+-- AUTO_INCREMENT for table `podcasts`
+--
+ALTER TABLE `podcasts`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
 -- AUTO_INCREMENT for table `recommended_courses`
 --
 ALTER TABLE `recommended_courses`
@@ -246,6 +316,13 @@ ALTER TABLE `recommended_courses`
 --
 ALTER TABLE `course_content`
   ADD CONSTRAINT `fk_course_content_course_id` FOREIGN KEY (`course_id`) REFERENCES `courses` (`course_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `enrolled_courses`
+--
+ALTER TABLE `enrolled_courses`
+  ADD CONSTRAINT `enrolled_courses_ibfk_1` FOREIGN KEY (`user_email`) REFERENCES `users` (`email`),
+  ADD CONSTRAINT `enrolled_courses_ibfk_2` FOREIGN KEY (`course_id`) REFERENCES `courses` (`course_id`);
 
 --
 -- Constraints for table `recommended_courses`

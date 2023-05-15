@@ -171,12 +171,10 @@ if (
             if (mysqli_num_rows($result) > 0) {
                 $user = mysqli_fetch_assoc($result);
                 setDataCookie($user);
-                $_SESSION['role']= $user['role'];
+                $_SESSION['role'] = $user['role'];
             }
 
             header("Location: ./../View/Pages/profile.php");
-
-
         } else {
             // User data insertion failed, display an error message 
             echo "Error: " . mysqli_error($conn);
